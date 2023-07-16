@@ -11,5 +11,10 @@
   "devDependencies": {
     "typescript": "^5.0.2",
     "vite": "^4.4.0"
+  },
+  "dependencies": {
+    "miniplex": "^2.0.0",
+    "modern-css-reset": "^1.4.0",
+    "rot-js": "^2.2.0"
   }
 }
