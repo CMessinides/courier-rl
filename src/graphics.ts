@@ -1,9 +1,9 @@
-export type Color = [r: number, g: number, b: number, a?: number];
+import { RGBColor } from "./colors";
 
 export interface Graphic {
   char: string;
-  fg: string | null;
-  bg: string | null;
+  fg: RGBColor | null;
+  bg: RGBColor | null;
 }
 
 export interface HasGraphic {

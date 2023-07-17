@@ -4,6 +4,7 @@ import { EventHandler } from "./input-handlers";
 import { Action } from "./actions";
 import { Display } from "rot-js";
 import { GameMap } from "./game-map";
+import { rgbToString } from "./colors";
 
 export class Engine {
   world: World<Entity>;
@@ -43,7 +44,13 @@ export class Engine {
     for (const { position, graphic } of this.renderableEntities) {
       const { x, y } = position;
       const { char, fg, bg } = graphic;
-      display.drawOver(x, y, char, fg, bg);
+      display.drawOver(
+        x,
+        y,
+        char,
+        fg && rgbToString(fg),
+        bg && rgbToString(bg)
+      );
     }
   }
 

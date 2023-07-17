@@ -1,3 +1,9 @@
+import {
+  COLOR_GROUND_BG,
+  COLOR_ROAD_BG,
+  COLOR_WALL_BG,
+  COLOR_WALL_FG,
+} from "./constants";
 import { Graphic } from "./graphics";
 
 export interface TileTemplate {
@@ -12,7 +18,7 @@ export const Ground: TileTemplate = {
   dark: {
     char: " ",
     fg: null,
-    bg: "#d7875f",
+    bg: COLOR_GROUND_BG,
   },
 };
 
@@ -22,7 +28,7 @@ export const Road: TileTemplate = {
   dark: {
     char: " ",
     fg: null,
-    bg: "#875f5f",
+    bg: COLOR_ROAD_BG,
   },
 };
 
@@ -30,8 +36,8 @@ export const Wall: TileTemplate = {
   isWalkable: false,
   isTransparent: false,
   dark: {
-    char: " ",
-    fg: null,
-    bg: "#262626",
+    char: "#",
+    fg: COLOR_WALL_FG,
+    bg: COLOR_WALL_BG,
   },
 };

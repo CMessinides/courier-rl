@@ -1,6 +1,7 @@
 import { Display } from "rot-js";
 import { Ground, TileTemplate, Wall } from "./tiles";
 import { Point } from "./point";
+import { rgbToString } from "./colors";
 
 export class GameMap {
   width: number;
@@ -26,7 +27,7 @@ export class GameMap {
     for (let i = 0; i < this.tiles.length; i++) {
       const { char, fg, bg } = this.tiles[i].dark;
       const { x, y } = this._idxToCoords(i);
-      display.draw(x, y, char, fg, bg);
+      display.draw(x, y, char, fg && rgbToString(fg), bg && rgbToString(bg));
     }
   }
 
