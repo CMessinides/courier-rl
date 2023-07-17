@@ -1,4 +1,4 @@
-import { Action, movementAction } from "./actions";
+import { Action, MovementAction } from "./actions";
 
 type ActionableEvent = KeyboardEvent;
 
@@ -12,16 +12,16 @@ export class EventHandler {
 
     switch (event.code) {
       case "ArrowUp":
-        action = movementAction(0, -1);
+        action = new MovementAction(0, -1);
         break;
       case "ArrowRight":
-        action = movementAction(1, 0);
+        action = new MovementAction(1, 0);
         break;
       case "ArrowDown":
-        action = movementAction(0, 1);
+        action = new MovementAction(0, 1);
         break;
       case "ArrowLeft":
-        action = movementAction(-1, 0);
+        action = new MovementAction(-1, 0);
         break;
       default:
         // No valid action

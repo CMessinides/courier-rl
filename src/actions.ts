@@ -1,19 +1,31 @@
-export enum ActionType {
-  MOVEMENT,
+import { Engine } from "./engine";
+import { Entity } from "./entity";
+import { HasPosition } from "./position";
+import { Vector, addVector } from "./vector";
+
+export abstract class Action {
+  abstract perform(engine: Engine, entity: Entity): void;
 }
 
-export type Action = MovementAction;
+export class MovementAction extends Action {
+  vec: Vector;
 
-export interface MovementAction {
-  type: ActionType.MOVEMENT;
-  dx: number;
-  dy: number;
-}
+  constructor(dx: number, dy: number) {
+    super();
+    this.vec = { dx, dy };
+  }
 
-export function movementAction(dx: number, dy: number) {
-  return {
-    type: ActionType.MOVEMENT,
-    dx,
-    dy,
-  };
+  perform(engine: Engine, entity: HasPosition): void {
+    const dest = addVector(entity.position, this.vec);
+
+    if (!engine.gameMap.inBounds(dest)) {
+      return;
+    }
+
+    if (!engine.gameMap.tileAt(dest)!.isWalkable) {
+      return;
+    }
+
+    entity.position = dest;
+  }
 }
